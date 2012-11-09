@@ -195,3 +195,24 @@
     fun:realloc
     obj:/usr/*lib*/libfontconfig.so*
 }
+
+{
+    im_module_create
+    Memcheck:Leak
+    ...
+    fun:g_dbus_connection_new_for_address_sync
+    ...
+    fun:ibus_bus_new
+    ...
+    fun:ibus_im_context_new
+    ...
+    fun:im_module_create
+}
+
+{
+    g_source_get_context
+    Memcheck:Leak
+    ...
+    fun:g_dbus_message_new_from_blob
+    fun:g_source_get_context
+}
