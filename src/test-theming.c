@@ -2,11 +2,30 @@
 
 int main (int argc, char *argv[])
 {
+    GdkScreen *screen;
     GtkBuilder *builder;
     GtkWidget *window;
     GtkWidget *grid;
+    GtkCssProvider *provider;
+    GError *error = NULL;
 
     gtk_init (&argc, &argv);
+
+    provider = gtk_css_provider_new ();
+
+    if (!gtk_css_provider_load_from_path (provider, "style.css", &error)) {
+        g_object_unref (provider);
+        g_clear_error (&error);
+        return 0;
+    }
+
+    screen = gdk_screen_get_default ();
+
+    gtk_style_context_add_provider_for_screen (
+        screen, GTK_STYLE_PROVIDER (provider),
+        GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
+
+    g_object_unref (provider);
 
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title (GTK_WINDOW (window), "Hello Theming");

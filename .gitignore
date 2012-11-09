@@ -44,3 +44,5 @@ tests/test-archive
 tests/test-plugin
 tests/test-context
 src/test-gtk
+src/test-builder
+src/test-theming
