@@ -1,0 +1,12 @@
+@define-color bg_color          #1a1a1a;
+@define-color prelight_bg_color shade(@bg_color, 1.02);
+@define-color fg_color          #ffffff;
+
+.button:prelight:active, .button:hover {
+    background-color: @prelight_bg_color;
+    color: @fg_color;
+}
+
+.entry {
+        color: #ff3139;
+}

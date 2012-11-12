@@ -23,7 +23,7 @@ int main (int argc, char *argv[])
 
     gtk_style_context_add_provider_for_screen (
         screen, GTK_STYLE_PROVIDER (provider),
-        GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
+        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
     g_object_unref (provider);
 
