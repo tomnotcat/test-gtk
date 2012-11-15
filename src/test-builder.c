@@ -15,6 +15,20 @@ int main (int argc, char *argv[])
     gtk_init (&argc, &argv);
 
     builder = gtk_builder_new ();
+
+    if (argc == 2) {
+        gtk_builder_add_from_file (builder, argv[1], NULL);
+
+        window = gtk_builder_get_object (builder, "dialog");
+        g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+
+        gtk_main ();
+
+        g_object_unref (builder);
+
+        return 0;
+    }
+
     gtk_builder_add_from_file (builder, "builder.ui", NULL);
 
     window = gtk_builder_get_object (builder, "window");

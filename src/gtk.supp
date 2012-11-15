@@ -216,3 +216,23 @@
     fun:g_dbus_message_new_from_blob
     fun:g_source_get_context
 }
+
+{
+    libpixman
+    Memcheck:Cond
+    obj:/usr/*lib*/libpixman-1.so*
+}
+
+{
+    ubuntu_menu_proxy_module_get
+    Memcheck:Leak
+    ...
+    fun:ubuntu_menu_proxy_module_get
+}
+
+{
+    _g_dbus_worker_new
+    Memcheck:Leak
+    ...
+    fun:_g_dbus_worker_new
+}
